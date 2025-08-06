@@ -17,7 +17,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     Optional<UserEntity> findByUsernameAndPassword(String username, String password);
 
     @Query("SELECT u FROM User u WHERE (:name IS NULL OR u.username LIKE %:name%) AND (:pin IS NULL OR u.address.pinCode = :pin) AND (:start IS NULL OR u.registrationDate >= :start) AND (:end IS NULL OR u.registrationDate <= :end)")
-    Page<UserEntity> searchUsers(@Param("name") String name, @Param("pin") String pin, @Param("start") LocalDate start, @Param("end") LocalDate end, org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable pageable);
+    Page<UserEntity> searchUsers(@Param("name") String name, @Param("pin") String pin, @Param("start") LocalDate start, @Param("end") LocalDate end,Pageable pageable);
 
 
 }
+
