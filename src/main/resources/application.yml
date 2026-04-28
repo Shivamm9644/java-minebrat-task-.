@@ -1,0 +1,77 @@
+spring:
+  application:
+    name: shrine-tours-enterprise-backend
+
+  datasource:
+    url: jdbc:mysql://32.193.3.150:3306/shrinetours
+    username: ubuntu
+    password: shrine
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 10
+      idle-timeout: 300000
+      max-lifetime: 480000
+      keepalive-time: 240000
+      connection-timeout: 30000
+      validation-timeout: 5000
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: shrine.tours1@gmail.com
+    password: pvjwvvsqferzvooq
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            trust: smtp.gmail.com
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: 8080
+
+google:
+  maps:
+    api-key: AIzaSyAjEqTpg277Jx1q9-_HbrwWSt_qb--u3eY
+    geocoding-url: https://maps.googleapis.com/maps/api/geocode/json
+    places-nearby-url: https://places.googleapis.com/v1/places:searchNearby
+    places-text-search-url: https://places.googleapis.com/v1/places:searchText
+    weather-url: https://weather.googleapis.com/v1/currentConditions:lookup
+
+app:
+  base-url: http://32.193.3.150:8080
+  upload-dir: ${user.dir}/uploads
+  security:
+    jwt:
+      secret: ShrineToursJwtSecretKeyShrineToursJwtSecretKey2026
+      access-token-expiration-ms: 86400000
+      refresh-token-expiration-ms: 604800000
+
+
+razorpay:
+  key-id: rzp_test_SXQRoyl0PBkiDH
+  key-secret: TXRf4e8Xyyes7Cj7m65hSIyA
+  webhook-secret: TXRf4e8Xyyes7Cj7m65hSIyA
+  currency: INR
